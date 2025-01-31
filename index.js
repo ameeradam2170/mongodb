@@ -26,6 +26,23 @@ app.get("/",async(req,res)=>{
         
     }  
 })
+app.put('/edit/:id',async(req,res)=>{
+    try {
+      await stuModel.findByIdAndUpdate(req.params.id,req.body)
+      res.send("update successfully")
+    } catch (error) {
+      res.send(error)
+    }
+  })
+
+  app.delete("/remove/:id",async(req,res)=>{
+    try {
+     await stuModel.findByIdAndDelete(req.params.id)
+     res.send("Deleted successfully!!")
+    } catch (error) {
+     res.send(error)
+    }
+ })
 
 
 
